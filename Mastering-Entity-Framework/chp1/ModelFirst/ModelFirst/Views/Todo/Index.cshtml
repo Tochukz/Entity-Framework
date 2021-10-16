@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ModelFirst.Todo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th></th>
+		<th>Todo Item</th>
+		<th>Done</th>
+		<th>Edit</th>
+		<th>Details</th>
+		<th>Delete</th>
+	</tr>
+
+	@{ int i = 0; }
+	@foreach (var item in Model)
+	{
+		<tr>
+			@{ i++; }
+			<td>@i</td>
+			<td>@item.TodoItem</td>
+			<td>@item.IsDone</td>
+			<td>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</td>
+			<td>@Html.ActionLink("Details", "Details", new { id = item.Id })</td>
+			<td>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</td>
+		</tr>
+	}
+</table>
