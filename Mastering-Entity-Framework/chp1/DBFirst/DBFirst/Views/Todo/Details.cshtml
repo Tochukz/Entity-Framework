@@ -1,0 +1,37 @@
+﻿@model DBFirst.Todo
+
+@{
+	ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>
+                <strong>Item ID</strong>
+            </td>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <td>
+				<strong>Todo Item</strong>
+            </td>
+            <td>@Model.TodoItem </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Completed</strong>
+            </td>
+            <td>@Model.IsDone</td>
+        </tr>
+    </table>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = @Model.Id  }) 
+    @Html.ActionLink("Back to List", "Index")
+</p>
