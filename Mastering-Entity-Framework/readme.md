@@ -85,10 +85,18 @@ A primary key is not the same as an Identity column. Primary key represents the 
 
 ## Chapter 2: Entity Framework DB First - Managing Entity Relationships
 __One-to-Many relationship__  
-To implement a one-tomany relationship, we have to create a foreign key in the table that is on the _many_ end.
+To implement a one-to-many relationship, we have to create a foreign key in the table that is on the _many_ end.
 
 __One-to-One relationship__  
-Entity Framework does not support having a foreign key in one of the related table for one-to-one relationship. One-to-one relationship is formed by making both the tables involved in the relationship share a primary key.
+Entity Framework does not support having a foreign key in one of the related table for one-to-one relationship. Instead, a one-to-one relationship is formed by making both the tables involved in the relationship share a primary key. To do this, you make the primary key of the second table a foreign key that points to the primary key of the first table.
 
 __Many-to-Many relationship__  
-To implement a many-to-many relationship w, we need to create a third table. This table is often called a _join table_ or a _junction table_. The primary keys of this table consist of the foreign keys from both tables involved in the relationsip.  
+To implement a many-to-many relationship, we need to create a third table. This table is often called a _join table_ or a _junction table_. The fields of this table consist of the foreign keys from both tables involved in the relationship.   
+There should be no other field but the foreign key fields from the related table only. This way Entity Framework generation tool will be able to figure out that the table is meant for a many-to-many relationship and create a direct navigation properties to the related entities thus eliminating the need for us to navigate to the related entity ourselves.
+
+### Useful Database Design Terms
+The __Store Schema Definition Language__ (SSDL) file format describes the store schema in the Entity Data Model (EDM). SSDL is a language based on XML that can be used for defining storage models by using the EDM
+
+The __Conceptual schema definition language__ (CSDL) is an XML-based language that describes the entities, relationships, and functions that make up a conceptual model of a data-driven application.
+
+The __Mapping specification language__ (MSL) is an XML-based language that describes the mapping between the conceptual model and storage model of an Entity Framework application.
