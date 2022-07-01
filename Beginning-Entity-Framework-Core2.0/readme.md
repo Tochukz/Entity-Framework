@@ -60,3 +60,58 @@ And to remote a Migration
 ```
 
 ## Chapter 2: Working with Multiple Tables  
+Return to this chapter pg 50:  Adding Data to a Table That Has Foreign Keys
+
+## Chapter 6:
+### Entity Framework Core  
+EF Core does not support visual designer for DB model and wizard to create the entity and context classes the way EF 6 does it.  
+So to generate the entities and DB context, you can either use Visual Studio's _Package Manager Console_ or `dotnet` CLI.  
+#### DB First Approach
+__Dependencies__  
+The following packages are required   
+* Microsoft.EntityFrameworkCore.Tools
+* Microsoft.EntityFrameworkCore.SqlServers
+
+__Using VS Package Manager Console__   
+1. Install the required packages
+```
+ > Install-Package Microsoft.EntityFrameworkCore.Tools
+ > Install-Package Microsoft.EntityFrameworkCore.SqlServer
+```
+If your project is an older version than .net6 (e.g .net5 or lower) you may specify a compatible version as an argument using the `-Version` flag.
+```
+ > Install-Package Microsoft.EntityFrameworkCore.Tools -Version 5.0.17
+ > Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0.17
+```  
+2. Run the `Scaffold-DbContext` command
+```
+> Scaffold-DbContext "Server=CHUCKSM;Database=OjlinksDB;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+```   
+This will generate a DbContext class and models for all the tables in your database inside the Models directory.   
+If your database requires a username and password for access, you can include them in your connection string.  
+```
+"Server=CHUCKSM;Database=OjlinksDB;Trusted_Connection=False;User Id=my_username;Password=my_password;"
+```   
+Remember to remove the username and password in the generated DbContext and not commit it to version control.  
+
+__Using dotnet CLI__  
+Entity framework can  also be setup using `dotnet` and `dotnet-ef` CLI tools.  
+1. Install the required packages from you terminal using `dotnet`
+```
+> dotnet add package Microsoft.EntityFrameworkCore.Tools
+> dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+```
+If you project is an older version than .net6 (e.g .net5 or lower) you may specify a compatible version using the `--version` flag.  
+```
+> dotnet add package Microsoft.EntityFrameworkCore.Tools --version 5.0.17
+> dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.0.17
+```
+2. Install `dotnet-ef` if you have not already done so.
+```
+ > dotnet tool install --global dotnet-ef
+```  
+3. Run the `dbcontext scaffold` sub-command using `dotnet-ef` dotnet tool.
+```
+> dotnet-ef dbcontext scaffold  "Server=CHUCKSM;Database=OjlinksDB;Trusted_Connection=False;User Id=db_user;Password=db_pass;" Microsoft.EntityFrameworkCore.SqlServer -o Data
+```  
+This will generate a DbContext class and models for all the tables in your database inside the Data directory.  
