@@ -60,9 +60,9 @@ And to remote a Migration
 ```
 
 ## Chapter 2: Working with Multiple Tables  
-Return to this chapter pg 50:  Adding Data to a Table That Has Foreign Keys
+Return to this chapter pg 55:  Adding Data to a Table That Has Foreign Keys
 
-## Chapter 6:
+## Chapter 6: ASP.NET MVC and EF Core 2.0
 ### Entity Framework Core  
 EF Core does not support visual designer for DB model and wizard to create the entity and context classes the way EF 6 does it.  
 So to generate the entities and DB context, you can either use Visual Studio's _Package Manager Console_ or `dotnet` CLI.  
