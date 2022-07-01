@@ -1,0 +1,36 @@
+﻿@page "{categoryId}"
+@model BookWebsite.Pages.CategoryModel
+@{
+	int i = 0;
+}
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8">
+			<h3>@Model.Category.Name</h3>
+			<h4>Select your Subcategory</h4>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<td>S/N</td>
+						<th>SubCategroy Name</th>
+						<th>Last Updated</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var subcat in Model.Category?.Subcategories)
+					{
+						i++;
+						<tr>
+							<td>@i</td>
+							<td>
+								<a href="/subcategory/@subcat.SubcategoryId">@subcat.Name</a>
+							</td>
+							<td>@subcat.UpdatedAt</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,69 @@
+﻿@page "{bookId}"
+@model BookWebsite.Pages.BookModel
+@{
+}
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8">
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2">
+							<h4>@Model.Book.Title</h4>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<strong></strong>
+						</td>
+						<td>@Model.Book.</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>BookId</strong>
+						</td>
+						<td>@Model.Book.BookId</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Authro</strong>
+						</td>
+						<td>@Model.Book.Author</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Price</strong>
+						</td>
+						<td>@Model.Book.Price</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Edition</strong>
+						</td>
+						<td>@Model.Book.Edition</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Subcategory</strong>
+						</td>
+						<td>@Model.Book.Subcategory.Name</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Category</strong>
+						</td>
+						<td>@Model.Book.Subcategory.Category.Name</td>
+					</tr>
+					<tr>
+						<td colspan="2">							
+							@Html.Raw(Model.Book.Details)
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

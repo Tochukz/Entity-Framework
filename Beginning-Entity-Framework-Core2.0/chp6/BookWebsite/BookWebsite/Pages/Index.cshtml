@@ -1,10 +1,32 @@
 ﻿@page
-@model IndexModel
+@model BookWebsite.Pages.IndexModel
 @{
     ViewData["Title"] = "Home page";
+    int i = 1;
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h3 class="display-4">Welcome to Book Website</h3>
+    <h4>Select your book category</h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>S/N</td>
+                <td>Category Name</td>
+                <td>Last Updated</td>
+            </tr>
+        </thead>
+		<tbody>
+			@foreach (var cat in @Model.Categories)
+			{
+				<tr>
+					<td>@cat.CategoryId</td>
+					<td>                     
+                        <a href="/category/@cat.CategoryId">@cat.Name</a>
+                    </td>
+					<td>@cat.UpdatedAt</td>
+				</tr>
+			}
+		</tbody>
+    </table>
 </div>
