@@ -94,6 +94,12 @@ If your database requires a username and password for access, you can include th
 ```   
 Remember to remove the username and password in the generated DbContext and not commit it to version control.  
 
+__Useful Flags__
+Here are some useful flag for the Scaffold-DbContext command in the Package Manager Console
+* `-Force` to overwrite your existing DbContext and Entities.
+* `-UseDatabaseNames` to retain your database column name case.
+* `-Context` to specify the name you want for your DB Context
+
 __Using dotnet CLI__  
 Entity framework can  also be setup using `dotnet` and `dotnet-ef` CLI tools.  
 1. Install the required packages from you terminal using `dotnet`
@@ -115,3 +121,10 @@ If you project is an older version than .net6 (e.g .net5 or lower) you may speci
 > dotnet-ef dbcontext scaffold  "Server=CHUCKSM;Database=OjlinksDB;Trusted_Connection=False;User Id=db_user;Password=db_pass;" Microsoft.EntityFrameworkCore.SqlServer -o Data
 ```  
 This will generate a DbContext class and models for all the tables in your database inside the Data directory.  
+
+__Useful Flags__
+Here are some useful flag for the `dotnet-ef` CLI tool
+* `--force` to overwrite your existing DbContext and Entities.
+* `--use-database-names` to retain your database column name case.
+* `--project` to specify the project to be acted on
+* `-c` to specify the name you want for your DB Context
